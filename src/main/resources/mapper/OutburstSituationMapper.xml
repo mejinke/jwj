@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bocom.jwj.dao.OutburstSituationDao">
+    <resultMap id="BaseResultMap" type="com.bocom.jwj.domain.OutburstSituationInfo">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="situation_title" property="title" jdbcType="VARCHAR"/>
+        <result column="situation_details" property="details" jdbcType="VARCHAR"/>
+        <result column="situation_time" property="date" jdbcType="TIMESTAMP"/>
+        <result column="situation_status" property="status" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="user_contact" property="userContact" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, situation_title, situation_details, situation_time, situation_status, user_name, 
+    user_contact
+  </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_outburst_situation
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getOutSitList" resultMap="BaseResultMap" parameterType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from t_outburst_situation
+        <where>
+            <if test="status != null">
+                AND situation_status = #{status,jdbcType=VARCHAR}
+            </if>
+            <if test="statusList != null">
+                AND situation_status IN
+                <foreach collection="statusList" item="item" index="index" open="(" separator="," close=")">
+                    #{item,jdbcType=VARCHAR}
+                </foreach>
+            </if>
+        </where>
+        ORDER BY situation_time DESC
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from t_outburst_situation
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.bocom.jwj.domain.OutburstSituationInfo">
+        insert into t_outburst_situation
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="title != null">
+                situation_title,
+            </if>
+            <if test="details != null">
+                situation_details,
+            </if>
+            <if test="date != null">
+                situation_time,
+            </if>
+            <if test="status != null">
+                situation_status,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="userContact != null">
+                user_contact,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="details != null">
+                #{details,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                #{date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="userContact != null">
+                #{userContact,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"  parameterType="com.bocom.jwj.domain.OutburstSituationInfo">
+        update t_outburst_situation
+        <set>
+            <if test="title != null">
+                situation_title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="details != null">
+                situation_details = #{details,jdbcType=VARCHAR},
+            </if>
+            <if test="date != null">
+                situation_time = #{date,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                situation_status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="userContact != null">
+                user_contact = #{userContact,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+</mapper>
