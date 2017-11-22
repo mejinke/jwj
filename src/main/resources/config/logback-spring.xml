@@ -21,5 +21,9 @@
     </appender>
     <!--输出sql语句-->
     <logger name="com.sun" level="debug" />
+    <logger name="com.bocom.jwj.dao" level="debug" />
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+    </root>
 
 </configuration>
