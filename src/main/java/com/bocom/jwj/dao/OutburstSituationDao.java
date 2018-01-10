@@ -19,4 +19,5 @@ public interface OutburstSituationDao {
     int updateByPrimaryKeySelective(OutburstSituationInfo record);
 
     List<OutburstSituationInfo> getOutSitList(Map<String, Object> param);
+
 }

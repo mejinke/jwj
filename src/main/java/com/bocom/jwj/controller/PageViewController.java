@@ -48,10 +48,9 @@ public class PageViewController {
     }
 
     @RequestMapping("/logout")
-    @ResponseBody
     public String logout() {
         session.invalidate();
-        return "logout success";
+        return "index";
     }
 
     @PreAuthorize("hasAuthority('TEST')")//有TEST权限的才能访问

@@ -29,7 +29,6 @@ import java.util.Map;
 @RequestMapping("/OutSit/manage")
 public class OutburstSituationController {
 
-
     private static Logger logger = LoggerFactory
             .getLogger(OutburstSituationController.class);
 

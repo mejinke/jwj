@@ -14,6 +14,7 @@ import org.springframework.security.cas.web.CasAuthenticationFilter;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
@@ -54,8 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()//配置安全策略
+        http.authorizeRequests()
+                //配置安全策略
                 .antMatchers(casProperties.getAnonUrl()).permitAll()//定义/请求不需要验证
+                .antMatchers("/**").hasAnyAuthority("1","2")
                 .anyRequest().authenticated()//其余的所有请求都需要验证
                 .and()
                 .logout().permitAll()//定义logout不需要验证
@@ -68,6 +71,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class);
 
         //http.csrf().disable(); //禁用CSRF
+    }
+
+    @Override
+    public void configure(WebSecurity web) {
+        //免拦截静态资源
+        web.ignoring().antMatchers("/img/**","/news/**");
     }
 
     /**
