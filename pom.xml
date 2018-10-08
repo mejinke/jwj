@@ -29,6 +29,24 @@
     </properties>
 
     <dependencies>
+
+
+        <!-- 分页插件 -->
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
+        <!-- mybatis -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -47,14 +65,14 @@
         <!-- security 对CAS支持 -->
 
         <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-cas</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-cas</artifactId>
         </dependency>
 
         <!-- security taglibs -->
         <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-taglibs</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
         </dependency>
         <!-- 热加载 -->
         <dependency>
@@ -81,12 +99,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
@@ -99,14 +111,6 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
-
-        <!-- 分页插件 -->
-
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>5.0.0</version>
-        </dependency>
 
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -126,6 +130,11 @@
             <version>2.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.0</version>
+        </dependency>
         <!--
                 <dependency>
                     <groupId>com.github.pagehelper</groupId>

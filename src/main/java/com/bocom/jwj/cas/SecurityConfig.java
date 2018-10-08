@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterBefore(casLogoutFilter(), LogoutFilter.class)
                 .addFilterBefore(singleSignOutFilter(), CasAuthenticationFilter.class);
 
-        //http.csrf().disable(); //禁用CSRF
+        http.csrf().disable(); //禁用CSRF
     }
 
     @Override

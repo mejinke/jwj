@@ -1,0 +1,40 @@
+{
+	"id": "729918f2-8dec-4e17-8d5f-109eb4449abf",
+	"name": "11",
+	"description": null,
+	"auth": null,
+	"events": null,
+	"variables": null,
+	"order": [
+		"85b6004e-d8c5-4ecb-82dd-07d2aa47d00e"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "85b6004e-d8c5-4ecb-82dd-07d2aa47d00e",
+			"name": "addOutSit",
+			"url": "http://127.0.0.1:9001/JWJ/OutSit/manage/addOutSit",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"type": "noauth"
+			},
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\n    \"title\": \"1怎么，而已123\",\n    \"details\": \"123123123123123天天啊啊\",\n    \"status\": \"1\",\n    \"userName\": \"测试\",\n    \"userContact\": \"15651819950\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}

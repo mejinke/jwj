@@ -2,6 +2,7 @@ package com.bocom.jwj.service;
 
 
 import com.bocom.jwj.dao.OutburstSituationDao;
+import com.bocom.jwj.dao.OutburstSituationMapper;
 import com.bocom.jwj.domain.OutburstSituationInfo;
 import com.bocom.jwj.utils.PageUtil;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,11 @@ public class OutburstSituationService {
     @Resource
     private OutburstSituationDao outburstSituationDao;
 
+    @Resource
+    private OutburstSituationMapper outburstSituationMapper;
+
     public int deleteOutSitByKey(String id) {
-        return outburstSituationDao.deleteByPrimaryKey(id);
+        return outburstSituationMapper.deleteByPrimaryKey(id);
     }
 
     public int insertOutSit(OutburstSituationInfo record) {

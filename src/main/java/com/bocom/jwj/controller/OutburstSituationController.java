@@ -39,10 +39,6 @@ public class OutburstSituationController {
     @Resource
     private HttpServletRequest request;
 
-    @Resource
-    private HttpSession session;
-
-
     /**
      * 获取突发情况列表   参数 status  pageNum  pageSize
      * status为-1时候 查询全部状态
